@@ -3,6 +3,13 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+
+  <yk-space>
+    <yk-button>主要按钮</yk-button>
+    <yk-button type="secondary">次要按钮</yk-button>
+    <yk-button type="outline">线框按钮</yk-button>
+  </yk-space>
+
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -11,10 +18,15 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  <div class="self">qqqq</div>
   <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<style scoped lang="less">
+@color : red;
+.self{
+  color: @scolor;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
