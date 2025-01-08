@@ -5,7 +5,7 @@ CREATE TABLE if not exists `user` (
   `mail` varchar(100) DEFAULT NOT NULL comment '邮箱',
   `pasword` varchar(100) DEFAULT NOT NULL comment '密码',
   `moment` varchar(100) DEFAULT NOT NULL comment '创建时间',
-  `avatar` varchar(255) DEFAULT NOT NULL comment '头像',
+  `imgurl` varchar(255) DEFAULT NOT NULL comment '头像',
   PRIMARY KEY (`id`)
 )
 
