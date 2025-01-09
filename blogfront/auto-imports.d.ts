@@ -6,5 +6,5 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-
+  const Icon: typeof import('@yike-design/ui/es/components/svg-icon')['Icon']
 }
