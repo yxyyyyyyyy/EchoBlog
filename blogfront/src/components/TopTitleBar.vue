@@ -1,7 +1,7 @@
 <template>
     <div class="top-title">
-        <yk-title :level="3" style="margin: 0'">{{ props.name }}</yk-title>
-        <slot name="custom"></slot>
+        <yk-title :level="3" style="margin:0">{{ props.name }}</yk-title>
+        <slot name="custom" />
         <yk-space size="s" v-if="isSeacher">
             <yk-button type="secondary" v-show="SearchContent" @click="cancelSearch">取消搜索</yk-button>
             <yk-input-search style="width: 320px" placeholder="请输入标题/简介..." v-model="SearchContent"
@@ -44,9 +44,10 @@ const cancelSearch = () => {
 
 <style lang="less" scoped>
 .top-title {
+    width: 95%;
     display: flex;
     justify-content:space-between;
     align-items:center;
-    margin: 20px 30px;
+    margin: 20px;
 }
 </style>
