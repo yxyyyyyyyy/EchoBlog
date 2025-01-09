@@ -13,6 +13,7 @@ declare module 'vue' {
     IconAlarmFill: typeof import('@yike-design/ui/es/components/svg-icon')['IconAlarmFill']
     IconAppOutline: typeof import('@yike-design/ui/es/components/svg-icon')['IconAppOutline']
     IconEmailFill: typeof import('@yike-design/ui/es/components/svg-icon')['IconEmailFill']
+    MenuBar: typeof import('./src/components/MenuBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     YkAvatar: typeof import('@yike-design/ui')['YkAvatar']
@@ -20,6 +21,7 @@ declare module 'vue' {
     YkButton: typeof import('@yike-design/ui')['YkButton']
     YkHeadbar: typeof import('@yike-design/ui')['YkHeadbar']
     YkSpace: typeof import('@yike-design/ui')['YkSpace']
+    YkText: typeof import('@yike-design/ui')['YkText']
     YkTheme: typeof import('@yike-design/ui')['YkTheme']
   }
 }

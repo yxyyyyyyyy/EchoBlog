@@ -1,7 +1,7 @@
 <template>
     <!-- HeadBar组件开发 -->
     <div class="headbar">
-        <yk-space align="center" :size="12" style="cursor: pointer">
+        <yk-space align="center" :size="12" style="cursor: pointer" @click=backHome()>
             <img src="../assets/vite.svg" class="logo" width="30px" height="30px">
             <span class="name">EchoYu博客后台</span>
         </yk-space>
@@ -20,7 +20,13 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
+// 返回总览
+const backHome = () => {
+    router.push('/');
+};
 </script>
 
 <style lang="less" scoped>
