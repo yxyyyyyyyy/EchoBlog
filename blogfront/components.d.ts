@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Card: typeof import('./src/components/overview/Card.vue')['default']
+    DatasEcharts: typeof import('./src/components/overview/DatasEcharts.vue')['default']
     Head: typeof import('./src/components/Head.vue')['default']
     HeadBar: typeof import('./src/components/HeadBar.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -16,6 +17,7 @@ declare module 'vue' {
     IconEmailFill: typeof import('@yike-design/ui/es/components/svg-icon')['IconEmailFill']
     IconPlusOutline: typeof import('@yike-design/ui/es/components/svg-icon')['IconPlusOutline']
     IconSearchOutline: typeof import('@yike-design/ui/es/components/svg-icon')['IconSearchOutline']
+    Line: typeof import('./src/components/Echarts/Line.vue')['default']
     MenuBar: typeof import('./src/components/MenuBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -25,6 +27,8 @@ declare module 'vue' {
     YkButton: typeof import('@yike-design/ui')['YkButton']
     YkHeadbar: typeof import('@yike-design/ui')['YkHeadbar']
     YkInputSearch: typeof import('@yike-design/ui')['YkInputSearch']
+    YkRadio: typeof import('@yike-design/ui')['YkRadio']
+    YkRadioGroup: typeof import('@yike-design/ui')['YkRadioGroup']
     YkSpace: typeof import('@yike-design/ui')['YkSpace']
     YkText: typeof import('@yike-design/ui')['YkText']
     YkTheme: typeof import('@yike-design/ui')['YkTheme']

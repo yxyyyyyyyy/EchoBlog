@@ -49,11 +49,11 @@ import { navLinks } from '../utils/menu'
         background: linear-gradient(180deg, #2b5aedde 0%, #2B5AED 100%);
 
         .yk-icon {
-            color: @bg-color-l;
+            color: #fff;
         }
 
         .yk-text {
-            color: @bg-color-l;
+            color: #fff;
             font-weight: 600;
         }
     }

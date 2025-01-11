@@ -38,7 +38,7 @@ onMounted(() => {
 .car {
     width: 100%;
     padding: 0 30px;
-
+    top: -15px;
     .car-item {
         width: 25%;
         background: #eee;

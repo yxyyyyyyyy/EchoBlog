@@ -10,3 +10,14 @@ export const overviewData = mock.mock({
     "diary|0-50": 0,
   }
 })
+
+
+// 访问量
+export const visitData = mock.mock({
+  "data|30":[
+    {
+      "data":"@datetime('MM-ddd')",
+      "count|10-100": 12
+    }
+  ]
+})
