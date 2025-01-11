@@ -21,3 +21,43 @@ export const visitData = mock.mock({
     }
   ]
 })
+
+// 数据检测
+export const pieData = mock.mock({
+  "data":{
+    "device":[
+      {
+        "key": 'mobie',
+        "name": "移动端",
+        "value|30-120":50
+      },
+      {
+        "key": 'pc',
+        "name": "电脑端",
+        "value|30-120":50
+      }
+    ],
+    "website":[
+      {
+        "key": 'home',
+        "name": "首页",
+        "value|30-120":50
+      },
+      {
+        "key": 'list',
+        "name": "摄影",
+        "value|30-120":50
+      },
+      {
+        "key": 'detail',
+        "name": "笔记",
+        "value|30-120":50
+      },
+      {
+        "key": 'detail',
+        "name": "图库",
+        "value|30-120":50
+      }
+    ]
+  }
+})

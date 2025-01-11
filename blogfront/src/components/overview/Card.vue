@@ -37,7 +37,7 @@ onMounted(() => {
 <style lang="less" scoped>
 .car {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 20px;
     top: -15px;
     .car-item {
         width: 25%;

@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import IndexView from '../views/indexView.vue'
+import IndexView from '../views/IndexView.vue'
 import OverView from '../views/OverView.vue'
 import Hello from '../components/HelloWorld.vue'
 

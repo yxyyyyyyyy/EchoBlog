@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import * as echarts from 'echarts'
-import { onMounted, ref, watch,markRaw } from 'vue';
+import { onMounted, ref, watch,markRaw, onUnmounted } from 'vue';
 const chart = ref<HTMLDivElement>()
 const myCharts = ref()
 const props = defineProps(['data','chartHeight'])
@@ -45,8 +45,11 @@ const visit = (e: any) => {
         ]
     }
 }
+
+visit(props.data);
 onMounted(() => {
     myCharts.value = markRaw(echarts.init(chart.value as HTMLDivElement));
+    myCharts.value.setOption(option.value);
     window.addEventListener('resize', () => {
         myCharts.value.resize();
     })
@@ -56,6 +59,12 @@ watch(() => props.data, (n) => {
     visit(n);
     myCharts.value.setOption(option.value);
 })
+onUnmounted(() => {
+    window.removeEventListener('resize', () => {
+        myCharts.value.resize();
+    });
+});
+
 </script>
 
 <style lang="less" scoped>

@@ -8,6 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Card: typeof import('./src/components/overview/Card.vue')['default']
+    Cicle: typeof import('./src/components/Echarts/Cicle.vue')['default']
+    Circle: typeof import('./src/components/Echarts/Circle.vue')['default']
+    copy: typeof import('./src/components/Echarts/Line copy.vue')['default']
     DatasEcharts: typeof import('./src/components/overview/DatasEcharts.vue')['default']
     Head: typeof import('./src/components/Head.vue')['default']
     HeadBar: typeof import('./src/components/HeadBar.vue')['default']

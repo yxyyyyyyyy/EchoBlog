@@ -4,7 +4,7 @@
         <Car/>
         <yk-space style="width: 100%;">
             <Echarts/>
-            <div style="background-color: aquamarine;height:30px; left:30px">评论</div>
+            <div style="background-color: aquamarine;height:30px; left:20px">评论</div>
         </yk-space>
     </yk-space>
 </template>

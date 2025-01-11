@@ -9,7 +9,7 @@
                     <yk-radio value="moon">近一月</yk-radio>
                 </yk-radio-group>
             </div>
-            <LineCharts :data="visit" chart-height="208px"/>
+            <LineCharts :data="visit" chart-height="208px" />
         </div>
         <div class="data-card">
             <div class="data-card-title">
@@ -19,21 +19,25 @@
                     <yk-radio value="moon">近一月</yk-radio>
                 </yk-radio-group>
             </div>
+            <div style=" display: flex;">
+                <Per :data="pieData.data.device" chart-height="208px" title="设备总数"/>
+                <Per :data="pieData.data.website" chart-height="208px" title="访问总数" />
+            </div>
         </div>
     </yk-space>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { LineCharts } from '../Echarts/main';
-import { visitData } from '../../utils/mock'
+import { LineCharts, Per } from '../Echarts/main';
+import { visitData, pieData } from '../../utils/mock'
 
 const radio1 = ref('moon')
 const radio2 = ref('moon')
 
 const visit = ref([])
 
-// 根据选择的时间段更新访问数据
+
 const getVisit = (e: string) => {
     let data = visitData.data
     if (e == 'week') {
@@ -45,6 +49,7 @@ const getVisit = (e: string) => {
 
 onMounted(() => {
     getVisit(radio1.value)
+
 })
 </script>
 
@@ -54,7 +59,8 @@ onMounted(() => {
     border-radius: @radius-m;
     background: @bg-color-l;
     width: 100%;
-    left: 30px;
+    left: 20px;
+
     .data-card-title {
         display: flex;
         align-items: center;

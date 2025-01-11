@@ -1,2 +1,3 @@
 import LineCharts from "./Line.vue";
-export { LineCharts }
+import Per from "./Circle.vue";
+export { LineCharts,Per }
