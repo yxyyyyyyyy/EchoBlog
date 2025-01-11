@@ -1,6 +1,6 @@
 <template>
     <!-- 数据统计卡片 -->
-    <yk-space dir="vertical" size="xl" style="width:48%; top:-15px">
+    <yk-space dir="vertical" size="xl">
         <div class="data-card">
             <div class="data-card-title">
                 <p class="name">访问量</p>
