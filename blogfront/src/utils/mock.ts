@@ -61,3 +61,25 @@ export const pieData = mock.mock({
     ]
   }
 })
+
+// 评论
+export const comment = mock.mock({
+  "data":{
+    "count": 123,
+    "list|123":[{
+      "id|+1": 0,
+      "article":{
+        "id|+1":2,
+        "title": "@ctitle(3,12)",
+      },
+      "user":{
+        "id|+1": 3,
+        "name": "@ctitle(3,12)",
+        "imgurl": "https://pic1.imgdb.cn/item/67225467d29ded1a8cbba11e.jpg",
+      },
+      "comment":"@cparagraph(1,4)",
+      "moment": "@datetime()",
+      "complaint|0-12":0
+    }]
+  }
+})
