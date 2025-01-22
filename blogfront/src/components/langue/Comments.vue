@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import CommentItem from './CommentItem.vue';
 import { comment } from '../../utils/mock'
-import { onMounted, ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import type { CommentsItemProps } from '../langue/index';
 import { ElMessage } from 'element-plus';
 // 总数
@@ -53,7 +53,7 @@ const getCommentDate = () => {
 }
 // 删除
 const deleteComments = (e: number) => {
-    comments.value = comments.value.filter((obj:any) => {
+    comments.value = comments.value.filter((obj: any) => {
         return obj.id != e
     })
     ElMessage.success('删除成功');

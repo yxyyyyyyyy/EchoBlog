@@ -1,13 +1,13 @@
 <template>
     <yk-space size="m" class="reply">
-        <yk-avatar img-url="https://pic1.imgdb.cn/item/67225467d29ded1a8cbba11e.jpg" size="l"></yk-avatar>
+        <yk-avatar img-url="https://pic1.imgdb.cn/item/67225467d29ded1a8cbba11e.jpg" size="l" v-if="isComment"></yk-avatar>
         <yk-space dir="vertical" size="s" class="reply_main">
             <div class="reply_name">
                 <yk-text strong>{{ content?.user.name }}</yk-text>
                 <yk-text style="font-size: 12px" type="third">{{ content?.moment }}</yk-text>
             </div>
             <yk-text type="secondary">{{ content?.comment }}</yk-text>
-            <yk-space size="s" align="center">
+            <yk-space size="s" align="center" v-if="isComment">
                 <yk-tag type="primary" style="font-size: 12px;">
                     {{ content?.article?.title }}
                 </yk-tag>
@@ -16,7 +16,7 @@
             </yk-space>
 
 
-            <IconDeleteOutline class="delete" @click="deleteReply(props.content!.id)"/>
+            <IconDeleteOutline class="delete" @click="deleteReply(props.content!.id)" v-if="isComment"/>
         </yk-space>
     </yk-space>
 </template>
@@ -42,7 +42,7 @@ const deleteReply = (id: number) => {
         padding-bottom: @space-l;
         flex: 1;
         position: relative;
-
+        
         .delete {
             position: absolute;
             top: 0;
