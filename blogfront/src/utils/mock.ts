@@ -106,7 +106,7 @@ export const group = mock.mock({
     "count": 123,
     "list|4":[{
       "id|+1": 0,
-      "name": "@ctitle(2,6)",
+      "name": "@ctitle(2,5)",
       "value|0-30": 4,
     }]
   }

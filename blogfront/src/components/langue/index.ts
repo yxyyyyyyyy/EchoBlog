@@ -27,3 +27,10 @@ export type replyProps = {
     content?: ReplyData,
     isComment: boolean;
 }
+
+// 分组
+export type GroupData = {
+    id: number|string,
+    name: string|number,
+    value: number
+}
