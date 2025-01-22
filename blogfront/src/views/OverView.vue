@@ -4,7 +4,7 @@
         <Car />
         <yk-space style="width: 100%;">
             <Echarts style="width: 48%;top:-15px" />
-            <Comments style="width: 48%;top:-15px" />
+            <Comments style="width: 48%;top:-15px" :page-size="10"/>
         </yk-space>
     </yk-space>
 </template>

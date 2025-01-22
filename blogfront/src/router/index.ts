@@ -16,6 +16,10 @@ const routes = [
           component: OverView,
         },
         {
+          path: 'localfile',
+          component: () => import('../views/FileLoad.vue'),
+        },
+        {
           path: 'hello',
           component: Hello,
         }

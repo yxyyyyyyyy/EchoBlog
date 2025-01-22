@@ -30,6 +30,7 @@ declare module 'vue' {
     PrivateMessage: typeof import('./src/components/langue/PrivateMessage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Subset: typeof import('./src/components/subset/Subset.vue')['default']
     TopTitleBar: typeof import('./src/components/TopTitleBar.vue')['default']
     YkAvatar: typeof import('@yike-design/ui')['YkAvatar']
     YkBadge: typeof import('@yike-design/ui')['YkBadge']

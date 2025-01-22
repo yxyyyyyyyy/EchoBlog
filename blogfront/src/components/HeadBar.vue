@@ -3,7 +3,7 @@
     <div class="headbar">
         <yk-space align="center" :size="12" style="cursor: pointer" @click=backHome()>
             <img src="../assets/vite.svg" class="logo" width="30px" height="30px">
-            <span class="name">EchoYu博客后台</span>
+            <span class="name">祝余Yu博客后台</span>
         </yk-space>
 
         <yk-space align="center" size="xl">
