@@ -8,6 +8,7 @@
             <yk-text type="secondary">{{ props.content?.comment }}</yk-text>
         </yk-space>
     </yk-space>
+   
 </template>
 
 <script lang="ts" setup>
@@ -24,6 +25,7 @@ const props = withDefaults(defineProps<replyProps>(), {})
         flex: 1;
         margin-bottom: 10px;
     }
+  
 
     .reply_name {
         display: flex;

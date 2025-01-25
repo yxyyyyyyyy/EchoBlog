@@ -1,4 +1,4 @@
-import PrivateMessage from "./PrivateMessage.vue";
+import PrivateMessage from "./PrivateMeaasge.vue";
 import Comments from "./Comments.vue";
 export { PrivateMessage, Comments };
 

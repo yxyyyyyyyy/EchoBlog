@@ -21,6 +21,6 @@ const childName = '本地文件';
 <style lang="less" scoped>
 .main {
     width: 100%;
-    padding: 25px;
+    padding: 0 25px;
 }
 </style>
