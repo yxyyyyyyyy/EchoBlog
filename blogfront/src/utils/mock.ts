@@ -108,6 +108,7 @@ export const group = mock.mock({
       "id|+1": 0,
       "name": "@ctitle(2,5)",
       "value|0-30": 4,
+      "moment": "@datetime()",
     }]
   }
 })

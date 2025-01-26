@@ -34,10 +34,16 @@
                     </div>
                 </template>
             </yk-popconfirm>
-            <yk-text type="primary">
+            <yk-text type="primary" @click="showModal">
                 <IconSettingsOutline />管理分组
             </yk-text>
         </yk-space>
+        <yk-modal v-model="visible" title="管理分组">
+            <subsetTable/>
+            <template #footer>
+                <yk-button type="primary" @click="visible = false">确定</yk-button>
+            </template>
+        </yk-modal>
     </div>
 </template>
 
@@ -45,26 +51,32 @@
 import { group, articleStatus } from '../../utils/mock'
 import { useCounterStore } from '../../store/subset'
 import { onMounted, ref } from 'vue';
+import subsetTable from './subsetTable.vue';
 const subsetStore = useCounterStore();
 const selected = ref<number | string>(-1)
+const visible = ref<boolean>(false)
 const emit = defineEmits(['nowSubset'])
 import { getCurrentInstance } from 'vue'
 const proxy: any = getCurrentInstance()?.proxy
 const newGroupName = ref('')
+const showModal = () => {
+  visible.value = true
+}
 function cancel() {
     newGroupName.value = ''
     proxy.$message({ type: 'warning', message: '你点击了取消按钮' })
 }
 function confirm() {
-    if(newGroupName.value){
+    if (newGroupName.value) {
         let obj = {
             id: -2,
             name: newGroupName.value,
-            value: 0
+            value: 0,
+            moment:Date.now().toString()
         }
         subsetStore.data.push(obj)
         proxy.$message({ type: 'primary', message: '新增分组成功' })
-    }else{
+    } else {
         proxy.$message({ type: 'error', message: '新增分组失败' })
     }
 }

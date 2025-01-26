@@ -32,5 +32,6 @@ export type replyProps = {
 export type GroupData = {
     id: number|string,
     name: string|number,
-    value: number
+    value: number,
+    moment :string
 }
