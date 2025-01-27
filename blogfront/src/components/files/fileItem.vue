@@ -3,7 +3,7 @@
         <div class="file_main_img" :class="{ 'file_main_img_active': props.data?.selected }">
             <yk-image :src="url" width="200" height="200" :is-lazy="true" fit="contain"></yk-image>
             <yk-space class="file_main_icon" size="s">
-                <IconDeleteOutline @click="emits('delete',props.data?.id)" />
+                <IconDeleteOutline @click="emits('deleteId',props.data?.id)" />
                 <yk-popconfirm title="选择分组" placement="bottomRight" @cancel="cancel" @confirm="confirm">
                     <template #content>
                         <yk-scrollbar height="148px" ref="scrollbar" class="subset">
@@ -48,7 +48,7 @@ const changeSubset = (e: number | string) => {
     subsetSelect.value = e;
 }
 
-const emits=defineEmits(['changeSubsetId','delete','selected'])
+const emits=defineEmits(['changeSubsetId','selected','deleteId'])
 function cancel() {
     // proxy.$message({ type: 'warning', message: '你点击了取消按钮' })
 }

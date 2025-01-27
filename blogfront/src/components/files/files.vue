@@ -14,7 +14,10 @@
                     <template #content>
                         <yk-scrollbar height="148px" ref="scrollbar" class="subset">
                             <div v-for="item in subsetStore.data" class="subset_menu" @click="changeSubset(item.id)"
-                                :class="{ 'subset_menu_active': subsetSelect == item.id }">
+                                :class="{ 'subset_menu_active': subsetSelect == item.id }"
+                                @changeSubsetId="changeSubsetIdfile"
+                                @deleteId="deletefile"
+                                @selected="selectedfile">
                                 {{ item.name }} {{ item.value }}
                             </div>
                         </yk-scrollbar>
@@ -112,6 +115,16 @@ function confirm() {
             resolve(true)
         }, 2000)
     })
+}
+
+const changeSubsetIdfile = () => {
+}
+
+const deletefile = (e:number) => {
+    console.log();
+}
+
+const selectedfile = (e:number) => {
 }
 onMounted(() => {
     getFiletDate(true)
