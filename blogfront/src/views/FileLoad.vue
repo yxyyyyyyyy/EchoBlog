@@ -9,6 +9,7 @@
             </template>
         </TopTile>
         <Subset />
+        <files />
     </yk-space>
 </template>
 
@@ -16,6 +17,7 @@
 import TopTile from '../components/TopTitleBar.vue'
 import Subset from '../components/subset/Subset.vue';
 const childName = '本地文件';
+import files from '../components/files/files.vue';
 </script>
 
 <style lang="less" scoped>
