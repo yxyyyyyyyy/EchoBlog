@@ -17,7 +17,7 @@
                 </yk-popconfirm>
             </yk-space>
             <div class="file_main_check"
-            @click="emits('selected',props.data?.id)">
+            @click="emits('selectedfile',props.data?.id)">
                 <IconTickMinOutline class="file_main_check_icon" 
                 style="color: white; font-size: 24px;"/>
             </div>
@@ -48,7 +48,7 @@ const changeSubset = (e: number | string) => {
     subsetSelect.value = e;
 }
 
-const emits=defineEmits(['changeSubsetId','selected','deleteId'])
+const emits=defineEmits(['changeSubsetId','selectedfile','deleteId'])
 function cancel() {
     // proxy.$message({ type: 'warning', message: '你点击了取消按钮' })
 }

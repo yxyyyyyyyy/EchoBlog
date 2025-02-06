@@ -1,12 +1,12 @@
 <template>
     <div class="files">
-        <div class="files-tool">
+        <div class="files-tool" v-show="selectFilesId.length > 0">
             <yk-space>
                 <yk-checkbox :checked="checkedAll" :indeterminate="indeterminate" @change="handleChangeAll">
                     全选
                 </yk-checkbox>
-                <yk-text>已选择3项内容</yk-text>
-                <yk-text type='primary' style='cursor:pointer;'>取消选择</yk-text>
+                <yk-text>已选择{{ selectFilesId.length }}项内容</yk-text>
+                <!-- <yk-text type='primary' style='cursor:pointer;'>取消选择</yk-text> -->
             </yk-space>
             <yk-space algin="center">
                 <IconDeleteOutline class="icon" />
@@ -14,10 +14,7 @@
                     <template #content>
                         <yk-scrollbar height="148px" ref="scrollbar" class="subset">
                             <div v-for="item in subsetStore.data" class="subset_menu" @click="changeSubset(item.id)"
-                                :class="{ 'subset_menu_active': subsetSelect == item.id }"
-                                @changeSubsetId="changeSubsetIdfile"
-                                @deleteId="deletefile"
-                                @selected="selectedfile">
+                                :class="{ 'subset_menu_active': subsetSelect == item.id }">
                                 {{ item.name }} {{ item.value }}
                             </div>
                         </yk-scrollbar>
@@ -28,7 +25,8 @@
         </div>
 
         <div class="file-item">
-            <fileItem v-for="item in files" :key="item.id" :data="item" />
+            <fileItem v-for="item in files" :key="item.id" :data="item" @changeSubsetId="changeSubsetIdfile"
+                @deleteId="deletefile" @selectedfile="selectedfile" />
         </div>
 
         <div class="pageHelp">
@@ -50,15 +48,25 @@ import { useCounterStore } from '../../store/subset'
 const subsetStore = useCounterStore();
 const handleChangeAll = (value: boolean) => {
     indeterminate.value = false
+    selectFilesId.value = []
     if (value) {
         checkedAll.value = true
+        for(let i = 0; i < files.value.length; i++){
+            files.value[i].selected = true;
+            selectFilesId.value.push(files.value[i].id);
+        }
     } else {
         checkedAll.value = false
+        for(let i = 0; i < files.value.length; i++){
+            files.value[i].selected = false;
+        }
     }
 }
 
 // 分类选择
 const subsetSelect = ref<number | string>()
+// 被选择的文件ids数组
+const selectFilesId = ref<number[]>([])
 // 切换分组
 const changeSubset = (e: number | string) => {
     subsetSelect.value = e;
@@ -120,11 +128,33 @@ function confirm() {
 const changeSubsetIdfile = () => {
 }
 
-const deletefile = (e:number) => {
-    console.log();
+const deletefile = (e: number) => {
 }
 
-const selectedfile = (e:number) => {
+const selectedfile = (e: number) => {
+
+    for (let i = 0; i < files.value.length; i++) {
+        if (files.value[i].id == e) {
+            files.value[i].selected = !files.value[i].selected;
+            if (files.value[i].selected) {
+                selectFilesId.value.push(files.value[i].id);
+            } else {
+                selectFilesId.value.splice(selectFilesId.value.indexOf(files.value[i].id), 1);
+            }
+
+            // 全选
+            if (selectFilesId.value.length == files.value.length) {
+                indeterminate.value = false;
+                checkedAll.value = true;
+            } else if(selectFilesId.value.length == 0) {
+                indeterminate.value = false;
+                checkedAll.value = false;
+            } else {
+                indeterminate.value = true;
+                checkedAll.value = false;
+            }
+        }
+    }
 }
 onMounted(() => {
     getFiletDate(true)
