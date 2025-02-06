@@ -9,7 +9,7 @@
                 <!-- <yk-text type='primary' style='cursor:pointer;'>取消选择</yk-text> -->
             </yk-space>
             <yk-space algin="center">
-                <IconDeleteOutline class="icon" />
+                <IconDeleteOutline class="icon" @click="deletefileSelectAll" />
                 <yk-popconfirm title="选择分组" placement="bottomRight" trigger="click" @cancel="cancel" @confirm="confirm">
                     <template #content>
                         <yk-scrollbar height="148px" ref="scrollbar" class="subset">
@@ -51,13 +51,13 @@ const handleChangeAll = (value: boolean) => {
     selectFilesId.value = []
     if (value) {
         checkedAll.value = true
-        for(let i = 0; i < files.value.length; i++){
+        for (let i = 0; i < files.value.length; i++) {
             files.value[i].selected = true;
             selectFilesId.value.push(files.value[i].id);
         }
     } else {
         checkedAll.value = false
-        for(let i = 0; i < files.value.length; i++){
+        for (let i = 0; i < files.value.length; i++) {
             files.value[i].selected = false;
         }
     }
@@ -125,12 +125,29 @@ function confirm() {
     })
 }
 
-const changeSubsetIdfile = () => {
+const changeSubsetIdfile = (e:any) => {
+    console.log(e);
+    
 }
 
+// 删除单张照片
 const deletefile = (e: number) => {
+    for (let i = 0; i < files.value.length; i++) {
+        if (files.value[i].id == e) {
+            files.value.splice(i, 1);
+        }
+    }
 }
 
+// 删除全部
+const deletefileSelectAll = () => {
+    if (selectFilesId.value.length > 0) {
+        for (let i = 0; i < selectFilesId.value.length; i++) {
+           files.value = files.value.filter((item: { id: any; }) => item.id !== selectFilesId.value[i]);
+        }
+    }
+    selectFilesId.value = []
+}
 const selectedfile = (e: number) => {
 
     for (let i = 0; i < files.value.length; i++) {
@@ -146,7 +163,7 @@ const selectedfile = (e: number) => {
             if (selectFilesId.value.length == files.value.length) {
                 indeterminate.value = false;
                 checkedAll.value = true;
-            } else if(selectFilesId.value.length == 0) {
+            } else if (selectFilesId.value.length == 0) {
                 indeterminate.value = false;
                 checkedAll.value = false;
             } else {

@@ -1,6 +1,6 @@
 <template>
     <div class="subset">
-        <yk-space>
+        <yk-space wrap>
             <div class="subset_menu" :class="{ 'subset_menu_active': selected == -1 }" @click="changeSubset(-1, '')">
                 全部{{ subsetStore.count }}
             </div>
@@ -22,7 +22,7 @@
 
         </yk-space>
 
-        <yk-space>
+        <yk-space style="flex: none;">
             <yk-popconfirm title="请输入分组名称" @cancel="cancel" :placement="'bottom'" @confirm="confirm">
                 <yk-text type="primary">
                     <IconPlusCircleOutline />新建
