@@ -14,4 +14,5 @@ export type CommentsItemProps = {
 export interface LabelItem  {
     id: string|number;
     name: string|number;
+    moment: string;
 }

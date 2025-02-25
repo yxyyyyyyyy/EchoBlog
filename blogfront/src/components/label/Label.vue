@@ -3,7 +3,7 @@
         <div class="label-item">
             <yk-title :level="4" style="margin:0;">标签</yk-title>
             <yk-space style="flex: none;">
-                <yk-popconfirm title="请输入分组名称" @cancel="cancel" :placement="'bottom'">
+                <yk-popconfirm title="请输入标签名称" @cancel="cancel" :placement="'bottom'"  @confirm="confirm">
                     <yk-text type="primary">
                         <IconPlusCircleOutline />新建
                     </yk-text>
@@ -15,11 +15,11 @@
                     </template>
                 </yk-popconfirm>
                 <yk-text type="primary" @click="showModal">
-                    <IconSettingsOutline />管理分组
+                    <IconSettingsOutline />管理标签
                 </yk-text>
             </yk-space>
-            <yk-modal v-model="visible" title="管理分组">
-                <labelTable />
+            <yk-modal v-model="visible" title="管理标签">
+                <labelTable :label="labelStore"/>
                 <template #footer>
                     <yk-button type="primary" @click="visible = false">确定</yk-button>
                 </template>
@@ -38,12 +38,12 @@
 import { labelgroup } from '../../utils/mock'
 import { onMounted, ref } from 'vue';
 import type { LabelItem } from '../../utils/interface';
-const selected = ref<number | string>(-1)
 const visible = ref<boolean>(false)
 const emit = defineEmits(['nowlabel'])
 import { getCurrentInstance } from 'vue'
 const proxy: any = getCurrentInstance()?.proxy
 const newGroupName = ref('')
+import labelTable from './labelTable.vue';
 const showModal = () => {
     visible.value = true
 }
@@ -53,9 +53,26 @@ function cancel() {
 }
 
 
-const labelStore = ref<LabelItem[]>()
+const labelStore = ref<LabelItem[]>([])
 const rawlabel = () => {
-    labelStore.value = labelgroup.data.list
+    labelStore.value = [...labelgroup.data.list]
+}
+
+//新建分组
+function confirm() {
+    if (newGroupName.value) {
+        let obj = {
+            id: -2,
+            name: newGroupName.value,
+            value: 0,
+            moment:Date.now().toString()
+        }
+        labelStore.value.push(obj)
+        newGroupName.value = ''
+        proxy.$message({ type: 'primary', message: '新增标签成功' })
+    } else {
+        proxy.$message({ type: 'error', message: '新增标签失败' })
+    }
 }
 
 onMounted(() => {
