@@ -10,3 +10,8 @@ export interface FileDataType {
 export type CommentsItemProps = {
     pageSize: number
 }
+
+export interface LabelItem  {
+    id: string|number;
+    name: string|number;
+}

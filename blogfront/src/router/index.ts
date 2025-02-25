@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import IndexView from '../views/IndexView.vue'
 import OverView from '../views/OverView.vue'
-import Hello from '../components/HelloWorld.vue'
+// import Hello from '../components/HelloWorld.vue'
 
 const routes = [
     {
@@ -20,9 +20,9 @@ const routes = [
           component: () => import('../views/FileLoad.vue'),
         },
         {
-          path: 'hello',
-          component: Hello,
-        }
+          path: 'article',
+          component: () => import('../views/ArticleView.vue'),
+        },
       ],
     },
 ]

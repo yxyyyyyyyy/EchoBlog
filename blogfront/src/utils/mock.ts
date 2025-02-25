@@ -133,3 +133,15 @@ export const fileData = mock.mock({
     "subsetId|0-4":3
   }]
 })
+
+// 标签
+export const labelgroup = mock.mock({
+  "data": {
+    "count": 123,
+    "list|17": [{
+      "id|+1": 0,
+      "name": "@ctitle(2,5)",
+      "moment": "@datetime()",
+    }]
+  }
+})

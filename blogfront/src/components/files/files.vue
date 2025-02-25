@@ -127,7 +127,7 @@ function confirm() {
 
 const changeSubsetIdfile = (e:any) => {
     console.log(e);
-    
+    proxy.$message({ type: 'succeed', message: '分组修改成功' })
 }
 
 // 删除单张照片

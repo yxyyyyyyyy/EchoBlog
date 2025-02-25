@@ -9,7 +9,7 @@
             </template>
         </TopTile>
         <Subset />
-        <files />
+        <files :page-size="pageSize"/>
     </yk-space>
 </template>
 
@@ -18,6 +18,8 @@ import TopTile from '../components/TopTitleBar.vue'
 import Subset from '../components/subset/Subset.vue';
 const childName = '本地文件';
 import files from '../components/files/files.vue';
+import { ref } from 'vue';
+const pageSize = ref<number>(10);
 </script>
 
 <style lang="less" scoped>
