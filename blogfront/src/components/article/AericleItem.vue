@@ -58,8 +58,8 @@
 
 <script lang="ts" setup>
 import { momentm } from '../../utils/moment'
-import { getCurrentInstance } from 'vue'
-const proxy: any = getCurrentInstance()?.proxy
+// import { getCurrentInstance } from 'vue'
+// const proxy: any = getCurrentInstance()?.proxy
 import { computed } from 'vue';
 import type { AericleDate } from '../../utils/interface'
 import { useCounterStore } from '../../store/subset';
