@@ -152,6 +152,7 @@ export const mkarticle = mock.mock({
     "count": 64,
     "list|64": [{
       "id|+1": 0,
+      "title": "@ctitle(4,12)",
       "cover|1": photos,
       "moment": "@datetime()",
       "label|0-3": ["@ctitle(2,4)"],
@@ -159,7 +160,7 @@ export const mkarticle = mock.mock({
       "views|12-429": 122,
       "comment|8-24": 12,
       "praise|8-123": 42,
-      "format": "jpeg",
+      "subsetId|0-4": 0,
       "state|0-1": 0
     }]
   }

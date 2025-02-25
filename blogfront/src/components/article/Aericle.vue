@@ -1,6 +1,7 @@
 <template>
     <yk-space dir="vertical" size="xl" style="width: 100%;">
-        <ArticleItem v-for="item in articleList" :key="item.id" :data="item"></ArticleItem>
+        <ArticleItem v-for="item in articleList" :key="item.id" :data="item" @delete="deleteItem" @state="changeState">
+        </ArticleItem>
     </yk-space>
 </template>
 
@@ -9,6 +10,8 @@ import ArticleItem from './AericleItem.vue';
 import { mkarticle } from '../../utils/mock';
 import type { AericleDate } from '../../utils/interface'
 import { onMounted, ref } from 'vue';
+import { getCurrentInstance } from 'vue'
+const proxy: any = getCurrentInstance()?.proxy
 const props = defineProps({
     pageSize: {
         type: Number,
@@ -52,6 +55,25 @@ const getDate = (e: boolean) => {
     articleList.value = [...arr]
 }
 
+// 改变状态
+const changeState = (e:any) => {
+    articleList.value.filter((item: { id: number; state: number }) => {
+        if (item.id == e.id) {
+            item.state = e.state
+            if (e.state === 1) {
+                proxy.$message({ type: 'primary', message: '发布成功' })
+            } else {
+                proxy.$message({ type: 'primary', message: '撤回一条文章~' })
+            }
+        }
+    })
+}
+// 删除
+const deleteItem = (id: number) => {
+    articleList.value = articleList.value.filter(item => item.id !== id)
+    count.value--
+    proxy.$message({ type: 'primary', message: '文章删除完成' })
+}
 onMounted(() => {
     getDate(true)
 })
