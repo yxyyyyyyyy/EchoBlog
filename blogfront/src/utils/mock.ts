@@ -130,7 +130,7 @@ export const fileData = mock.mock({
     "fileName": "@ctitle(2,12)",
     "url|1": photos,
     "format": 'jpeg',
-    "subsetId|0-4":3
+    "subsetId|0-4": 3
   }]
 })
 
@@ -142,6 +142,25 @@ export const labelgroup = mock.mock({
       "id|+1": 0,
       "name": "@ctitle(2,5)",
       "moment": "@datetime()",
+    }]
+  }
+})
+
+// 博客文章
+export const mkarticle = mock.mock({
+  "data": {
+    "count": 64,
+    "list|64": [{
+      "id|+1": 0,
+      "cover|1": photos,
+      "moment": "@datetime()",
+      "label|0-3": ["@ctitle(2,4)"],
+      "introduce": "@cparagraph(1,4)",
+      "views|12-429": 122,
+      "comment|8-24": 12,
+      "praise|8-123": 42,
+      "format": "jpeg",
+      "state|0-1": 0
     }]
   }
 })
