@@ -63,6 +63,7 @@ declare module 'vue' {
     YkHeadbar: typeof import('@yike-design/ui')['YkHeadbar']
     YkImag: typeof import('@yike-design/ui')['YkImag']
     YkImage: typeof import('@yike-design/ui')['YkImage']
+    YkImagePreviewGroup: typeof import('@yike-design/ui')['YkImagePreviewGroup']
     YkImg: typeof import('@yike-design/ui')['YkImg']
     YkInput: typeof import('@yike-design/ui')['YkInput']
     YkInputSearch: typeof import('@yike-design/ui')['YkInputSearch']

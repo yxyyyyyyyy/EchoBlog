@@ -3,7 +3,7 @@
         <TopTile name="博客文章" :isSeacher="true"></TopTile>
         <yk-space style="width: 100%;" size="l">
             <Gallery />
-            <GalleryEditor style="flex:none;width:460px"/>
+            <GalleryEditor style="flex:none;width:480px"/>
         </yk-space>
     </yk-space>
 </template>

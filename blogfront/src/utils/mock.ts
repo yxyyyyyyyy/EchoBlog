@@ -203,9 +203,9 @@ export const mkdairy = mock.mock({
       "id|+1": 0,
       "title": "@ctitle(4,12)",
       "moment": "@datetime()",
-      "weatherId|0-7":0,
+      "weatherId|0-6":0,
       "content": "@cparagraph(8,10)",
-      "picture|0-1": photoarr
+      "picture|1": photoarr
     }]
   }
 })

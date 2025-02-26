@@ -56,7 +56,7 @@ const getDate = () => {
 const deleteItem = (id: number) => {
     dairyList.value = dairyList.value.filter(item => item.id !== id)
     count.value--
-    proxy.$message({ type: 'primary', message: '文章删除完成' })
+    proxy.$message({ type: 'primary', message: '日记删除完成' })
 }
 
 
@@ -78,6 +78,7 @@ onMounted(() => {
 
     .pageHelp {
         padding: @space-s 0 @space-l;
+        padding-top: 24px ;
         display: flex;
         align-items: center;
         justify-content: flex-end;
