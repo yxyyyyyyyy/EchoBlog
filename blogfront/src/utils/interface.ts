@@ -46,3 +46,13 @@ export interface GalleryDate {
     praise: number;//点赞次数
     content?:string|string[]
 }
+
+
+export interface DairyDate {
+    id: number;
+    title: string;
+    moment: Date;//时间
+    weatherId: number;
+    content?: string;//简介
+    picture?:string|string[]
+}

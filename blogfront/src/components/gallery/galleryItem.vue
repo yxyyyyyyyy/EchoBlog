@@ -23,7 +23,7 @@
 
             <yk-space class="controls" :size="4">
                 <IconModifyOutline />
-                <IconDeleteOutline />
+                <IconDeleteOutline @click="deleteArt" />
             </yk-space>
 
 

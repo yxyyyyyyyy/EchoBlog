@@ -194,3 +194,18 @@ export const mkgallery = mock.mock({
     }]
   }
 })
+
+// mkdiary 图库数据
+export const mkdairy = mock.mock({
+  "data": {
+    "count": 64,
+    "list|64": [{
+      "id|+1": 0,
+      "title": "@ctitle(4,12)",
+      "moment": "@datetime()",
+      "weatherId|0-7":0,
+      "content": "@cparagraph(8,10)",
+      "picture|0-1": photoarr
+    }]
+  }
+})

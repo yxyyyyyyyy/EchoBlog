@@ -1,0 +1,37 @@
+export const waetherLinks = [
+   {
+    id:0,
+    name:'晴天',
+    icon:'../assets/weather/0.svg'
+   },
+   {
+    id:1,
+    name:'阴天',
+    icon:'../assets/weather/1.svg'
+   },
+   {
+    id:2,
+    name:'雾霾',
+    icon:'../assets/weather/2.svg'
+   },
+   {
+    id:3,
+    name:'下雨',
+    icon:'../assets/weather/3.svg'
+   },
+   {
+    id:4,
+    name:'雷雨',
+    icon:'../assets/weather/4.svg'
+   },
+   {
+    id:5,
+    name:'下雪',
+    icon:'../assets/weather/5.svg'
+   },
+   {
+    id:6,
+    name:'有风',
+    icon:'../assets/weather/6.svg'
+   }
+]

@@ -24,6 +24,10 @@ const routes = [
         component: () => import('../views/ArticleView.vue'),
       },
       {
+        path: 'diary',
+        component: () => import('../views/DiaryView.vue'),
+      },
+      {
         path: 'gallery',
         component: () => import('../views/Gallery.vue'),
       },
