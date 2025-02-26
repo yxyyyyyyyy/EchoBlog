@@ -1,13 +1,15 @@
 <template>
     <div class="gallery">
-        <yk-space dir="vertical" size="xl" style="width: 100%;">
-            <galleryItem v-for="item in galleryList" :key="item.id" :data="item" @delete="deleteItem"
-                @state="changeState">
-            </galleryItem>
-            <div class="pageHelp">
-                <yk-pagination :total="count" size="m" @change="changePage"></yk-pagination>
+        <div class="content">
+            <div class="files">
+                <galleryItem v-for="item in galleryList" :key="item.id" :data="item" @delete="deleteItem"
+                    @state="changeState">
+                </galleryItem>
             </div>
-        </yk-space>
+        </div>
+        <div class="pageHelp">
+            <yk-pagination :total="count" size="m" @change="changePage"></yk-pagination>
+        </div>
     </div>
 
 
@@ -100,6 +102,18 @@ onMounted(() => {
     background: @bg-color-l;
     padding: 32px24px 24px;
     border-radius: @radius-m;
+
+    .content {
+        display: inline;
+
+        .files {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 238px);
+            row-gap: 32px;
+            column-gap: 24px;
+            justify-content: center;
+        }
+    }
 
     .pageHelp {
         padding: @space-s 0 @space-l;

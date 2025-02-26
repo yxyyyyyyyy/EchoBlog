@@ -25,6 +25,11 @@ export const navLinks = [
         icon: 'IconFillFill'
     },
     {
+        path: 'share',
+        name: '资源分享',
+        icon: 'IconSendOutline'
+    },
+    {
         path: 'install',
         name: '设置',
         icon: 'IconSettingsOutline'

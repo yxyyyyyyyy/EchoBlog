@@ -44,4 +44,5 @@ export interface GalleryDate {
     state: number;//状态0未发布、1已发布
     comment: number;
     praise: number;//点赞次数
+    content?:string|string[]
 }

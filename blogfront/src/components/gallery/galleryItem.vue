@@ -1,22 +1,31 @@
 <template>
     <div class="gallery-item">
-        <yk-space size="xl">
+        <yk-space size="s" dir="vertical">
             <div class="galleryDiv">
                 <div class="images">
                     <yk-image :src="cover" width="238" height="160" :is-lazy="true" :preview="false" fit="cover" />
                 </div>
                 <yk-space :size="2">
-                    <div class="image-left">
-                        <yk-image :src="cover" width="78" height="78" :is-lazy="true" :preview="false" fit="cover" />
+                    <div class="image-left image-div">
+                        <yk-image width="78" height="78" :is-lazy="true" :preview="false" fit="cover"
+                            :src="'./src/assets/photos/' + props.data?.content![0]" v-if="props.data?.content![0]" />
                     </div>
-                    <div class="image-center">
-                        <yk-image :src="cover" width="78" height="78" :is-lazy="true" :preview="false" fit="cover" />
+                    <div class="image-center image-div">
+                        <yk-image :src="'./src/assets/photos/' + props.data?.content![1]" v-if="props.data?.content![1]"
+                            width="78" height="78" :is-lazy="true" :preview="false" fit="cover" />
                     </div>
-                    <div class="image-right">
-                        <yk-image :src="cover" width="78" height="78" :is-lazy="true" :preview="false" fit="cover" />
+                    <div class="image-right image-div">
+                        <yk-image :src="'./src/assets/photos/' + props.data?.content![2]" v-if="props.data?.content![2]"
+                            width="78" height="78" :is-lazy="true" :preview="false" fit="cover" />
                     </div>
                 </yk-space>
             </div>
+
+            <yk-space class="controls" :size="4">
+                <IconModifyOutline />
+                <IconDeleteOutline />
+            </yk-space>
+
 
             <div style="width: 100%;">
                 <p class="title">{{ props.data?.title }}</p>
@@ -31,38 +40,21 @@
                                 <IconLikeOutline />
                                 {{ props.data?.praise }}
                             </yk-text>
-                            <yk-text type="third">
-                                <IconCommentOutline />
-                                {{ props.data?.comment }}
-                            </yk-text>
                         </yk-space>
                         <yk-text type="third">
-                            {{ momentm(props.data!.moment) }}
+                            {{ momentm1(props.data!.moment) }}
                         </yk-text>
-
-                    </yk-space>
-                    <yk-space class="controls" size="xl">
-                        <yk-tooltip placement="top" title="发布" v-if="props.data?.state === 0">
-                            <IconSendOutline @click="updateState(1)" />
-                        </yk-tooltip>
-                        <yk-tooltip placement="top" title="撤回" v-if="props.data?.state === 1">
-                            <IconRevokeOutline @click="updateState(0)" />
-                        </yk-tooltip>
-                        <IconModifyOutline />
-
-                        <yk-popconfirm title="确定删除?" placement="topRight" content="删除将不可恢复" :show-cancel="false"
-                            @confirm="deleteArt()">
-                            <IconDeleteOutline />
-                        </yk-popconfirm>
                     </yk-space>
                 </div>
             </div>
         </yk-space>
+
+
     </div>
 </template>
 
 <script lang="ts" setup>
-import { momentm } from '../../utils/moment'
+import { momentm1 } from '../../utils/moment'
 // import { getCurrentInstance } from 'vue'
 // const proxy: any = getCurrentInstance()?.proxy
 import { computed } from 'vue';
@@ -82,18 +74,14 @@ function deleteArt() {
     emits("delete", props.data!.id)
 }
 
-// 修改状态
-const updateState = (e: number) => {
-    emits("state", { id: props.data!.id, state: e })
-}
 </script>
 
 <style lang="less" scoped>
 .gallery-item {
     border-radius: @radius-m;
     background: @bg-color-l;
-    padding: @space-xl;
-    width: 100%;
+    width: 238px;
+
 
     .images {
         position: relative;
@@ -103,6 +91,12 @@ const updateState = (e: number) => {
         padding-bottom: 2px;
     }
 
+    .image-div {
+        width: 78px;
+        height: 78px;
+        background: @gray-2;
+    }
+
     .image-left {
         border-radius: 0 0 0 @radius-m;
         overflow: hidden;
@@ -110,13 +104,20 @@ const updateState = (e: number) => {
 
     .image-right {
         overflow: hidden;
-        border-radius: 0 0 @radius-m 0 ;
+        border-radius: 0 0 @radius-m 0;
     }
 
     .title {
-        font-size: 20px;
+        .font-l();
+        padding-top: @space-m;
         font-weight: 600;
-        padding-bottom: @space-s;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        /* 添加标准属性 */
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
     }
 
 
@@ -124,18 +125,40 @@ const updateState = (e: number) => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
 
-        .controls {
-            .yk-icon {
-                width: 18px;
-                height: 18px;
-                color: @font-color-s;
-                cursor: pointer;
+    .controls {
+        position: absolute;
+        right: @space-l;
+        top: @space-l;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: @radius-m;
+        padding: @space-ss;
+        opacity: 0;
 
-                &:hover {
-                    color: @pcolor;
-                }
+        .yk-icon {
+            width: 24px;
+            height: 24px;
+            color: @gray;
+            padding: 5px;
+            cursor: pointer;
+
+            &:hover {
+                color: @pcolor;
             }
+        }
+
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+        }
+    }
+
+
+    &:hover {
+        .controls {
+            opacity: 1;
         }
     }
 }
