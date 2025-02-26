@@ -18,6 +18,8 @@ declare module 'vue' {
     DatasEcharts: typeof import('./src/components/overview/DatasEcharts.vue')['default']
     FileItem: typeof import('./src/components/files/fileItem.vue')['default']
     Files: typeof import('./src/components/files/files.vue')['default']
+    Gallery: typeof import('./src/components/gallery/gallery.vue')['default']
+    GalleryItem: typeof import('./src/components/gallery/galleryItem.vue')['default']
     Head: typeof import('./src/components/Head.vue')['default']
     HeadBar: typeof import('./src/components/HeadBar.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']

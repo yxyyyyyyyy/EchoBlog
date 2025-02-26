@@ -121,6 +121,14 @@ const photos = [
   "4.jpg",
   "5.jpg",
   "6.jpg",
+];
+
+const photoarr = [
+  ["1.jpg"],
+  ["1.jpg","2.jpg"],
+  ["3.jpg","4.jpg"],
+  ["1.jpg","4.jpg","5.jpg"],
+  ["1.jpg","3.jpg","6.jpg","2.jpg"],
 ]
 
 export const fileData = mock.mock({
@@ -162,6 +170,26 @@ export const mkarticle = mock.mock({
       "praise|8-123": 42,
       "subsetId|0-4": 0,
       "state|0-1": 0
+    }]
+  }
+})
+
+// mkgallery 图库数据
+export const mkgallery = mock.mock({
+  "data": {
+    "count": 64,
+    "list|64": [{
+      "id|+1": 0,
+      "title": "@ctitle(4,12)",
+      "cover|1": photos,
+      "moment": "@datetime()",
+      "label|0-3": ["@ctitle(2,4)"],
+      "introduce": "@cparagraph(1,4)",
+      "views|12-429": 122,
+      "comment|8-24": 12,
+      "praise|8-123": 42,
+      "subsetId|0-4": 0,
+      "content|1": photoarr
     }]
   }
 })
