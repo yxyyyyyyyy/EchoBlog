@@ -2,7 +2,7 @@ export const waetherLinks = [
    {
     id:0,
     name:'晴天',
-    icon:'../assets/weather/0.svg'
+    icon:'assets/weather/0.svg'
    },
    {
     id:1,

@@ -70,6 +70,7 @@ declare module 'vue' {
     YkModal: typeof import('@yike-design/ui')['YkModal']
     YkPagination: typeof import('@yike-design/ui')['YkPagination']
     YkPopconfirm: typeof import('@yike-design/ui')['YkPopconfirm']
+    YkPopover: typeof import('@yike-design/ui')['YkPopover']
     YkRadio: typeof import('@yike-design/ui')['YkRadio']
     YkRadioGroup: typeof import('@yike-design/ui')['YkRadioGroup']
     YkSapce: typeof import('@yike-design/ui')['YkSapce']
@@ -81,8 +82,11 @@ declare module 'vue' {
     YkTableColumn: typeof import('@yike-design/ui')['YkTableColumn']
     YkTag: typeof import('@yike-design/ui')['YkTag']
     YkText: typeof import('@yike-design/ui')['YkText']
+    YkTextA: typeof import('@yike-design/ui')['YkTextA']
+    YkTextArea: typeof import('@yike-design/ui')['YkTextArea']
     YkTheme: typeof import('@yike-design/ui')['YkTheme']
     YkTitle: typeof import('@yike-design/ui')['YkTitle']
     YkTooltip: typeof import('@yike-design/ui')['YkTooltip']
+    YkUpload: typeof import('@yike-design/ui')['YkUpload']
   }
 }
