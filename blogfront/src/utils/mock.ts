@@ -209,3 +209,14 @@ export const mkdairy = mock.mock({
     }]
   }
 })
+
+
+// pic List
+export const picList = mock.mock({
+  "data|6":[
+    {
+      "id|+1":0,
+      "url|1":photos
+    }
+  ]
+})

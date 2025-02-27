@@ -7,21 +7,21 @@
                 <yk-button type="secondary">取消</yk-button>
             </yk-space>
         </div>
+
+        <yk-space style="width: 100%;">
+            <EditGalleryPic />
+            <div class="edit-form"></div>
+        </yk-space>
     </div>
 </template>
 
 <script lang="ts" setup>
-
+import EditGalleryPic from '../components/gallery/EditGalleryPic.vue';
 </script>
 
 <style lang="less" scoped>
 .edit-gallery {
-    padding: @space-xl;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+    padding: @space-xl 80px;
     .topbar {
         border-radius: @radius-m;
         background: @bg-color-l;
@@ -29,12 +29,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 1200px;
+        margin-bottom: @space-l;
 
         .title {
             .font-xl();
             font-weight: 600;
         }
+    }
+
+    .edit-form {
+        background: @bg-color-l;
+        height: 400px;
+        width: 440px;
+        flex: none;
+        border-radius: @radius-m;
     }
 }
 </style>
