@@ -57,7 +57,7 @@ export const overviewTotal = [
         bgcolor: '180deg,#25df0629,8%,#25df063d 100%'
     },
     {
-        path: 'editdiary',
+        path: 'diary',
         name: '随笔随记',
         total: null,
         bgcolor: '180deg,#00c9f529 8%,#00c9f53d 100%'

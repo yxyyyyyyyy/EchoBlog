@@ -8,7 +8,7 @@
                 <yk-title :level="2" style="margin: 0;">{{ item.total }}</yk-title>
             </yk-space>
 
-            <yk-button v-if="index > 0" size="xl" type="secondary" shape="square">
+            <yk-button v-if="index > 0" size="xl" type="secondary" shape="square" @click="goPage(item.path)">
                 <IconPlusOutline />
             </yk-button>
         </div>
@@ -19,6 +19,8 @@
 import { ref, onMounted } from 'vue';
 import { overviewTotal } from '../../utils/menu';
 import { overviewData } from '../../utils/mock'
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 const overviewTotall = ref(overviewTotal)// 获取数据
 const drawCarDAta = () => {
@@ -29,6 +31,9 @@ const drawCarDAta = () => {
     overviewTotall.value[3].total = data.diary
 }
 
+const goPage = (path: string) => {
+    router.push(path)
+}
 onMounted(() => {
     drawCarDAta()
 })

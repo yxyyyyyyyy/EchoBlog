@@ -33,6 +33,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/editgallery',
+    component: () => import('../views/EditGallery.vue'),
+  },
 ]
 
 const router = createRouter({
