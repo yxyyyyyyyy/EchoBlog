@@ -42,7 +42,6 @@ import Form from '../components/forms/Form.vue';
 
     .edit-form {
         background: @bg-color-l;
-        height: 400px;
         width: 100%;
         flex: none;
         border-radius: @radius-m;

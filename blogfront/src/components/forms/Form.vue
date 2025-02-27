@@ -13,20 +13,34 @@
                 </div>
 
                 <yk-space align="center">
-                    <yk-tag v-for="(tag, index) in formData.label" :key="index" closeable shape="round" :type="tag">
+                    <yk-tag v-for="(tag, index) in formData.label" :key="index" closeable shape="round" :type="tag"
+                        @close="deleteLabel(tag)">
                         {{ tag }}
                     </yk-tag>
-                    <yk-text type="third" @click="showModal" style="cursor: pointer; white-space:nowrap">插入标签</yk-text>
+                    <yk-text type="third" @click="showModal" style="cursor: pointer; white-space:nowrap"
+                        v-show="formData.label.length < 3">插入标签</yk-text>
                 </yk-space>
+
             </yk-space>
+
+            <div :class="{longText: props.subset == 0}">
+                <yk-text-area v-model="formData.introduce" placeholder="请输入简介" :max-length="800" :auto-size="rows"></yk-text-area>
+            </div>
         </yk-space>
+
+        <div class="cover" v-if="props.subset == 0">
+            <yk-upload :upload-url="uploadUrl" :file-list="fileUrl" desc="封面800*600" :limit="1"
+                accept="image/*"></yk-upload>
+        </div>
+
 
         <yk-modal v-model="visible" title="选择标签" size="s" :show-footer="false">
             <yk-space dir="vertical" size="l">
                 <yk-input v-model="inputLabel" plaplaceholder="输入标签回车确定" style="width: 280px"
                     @submit="addLabel"></yk-input>
                 <yk-space size="s">
-                    <yk-tag v-for="(tag, index) in formData.label" :key="index" closeable shape="round" :type="tag">
+                    <yk-tag v-for="(tag, index) in formData.label" :key="index" closeable shape="round" :type="tag"
+                        @close="deleteLabel(tag)">
                         {{ tag }}
                     </yk-tag>
                 </yk-space>
@@ -44,10 +58,31 @@
 
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { group, labelgroup } from '../../utils/mock'
 import type { LabelItem } from '../../utils/interface'
 
+const props = defineProps({
+    subset: {
+        default: 0,
+        type: Number
+    }
+})
+
+// 简介行数
+const rows = computed(() => {
+    if (props.subset === 0) {
+        return {
+            minRows: 4,
+            maxRows: 10,
+        }
+    } else {
+        return {
+            minRows: 24,
+            maxRows: 30,
+        }
+    }
+})
 const visible = ref<boolean>(false)
 const showModal = () => {
     visible.value = true
@@ -76,6 +111,10 @@ const addLabel = () => {
     }
 }
 
+const deleteLabel = (e: any) => {
+    tagArr.value.unshift(e)
+    formData.value.label = formData.value.label.filter((item: any) => item !== e)
+}
 const selectLab = (e: any) => {
     if (formData.value.label.length < 3) {
         formData.value.label.push(e)
@@ -84,6 +123,8 @@ const selectLab = (e: any) => {
         })
     }
 }
+
+
 
 // 标签
 const inputLabel = ref()
@@ -103,6 +144,8 @@ const subsetSelect = (e: number) => {
     subsetName.value = subsetList.value.find((item: any) => item.id === e).name
 }
 
+const uploadUrl = ''
+const fileUrl = ref([])
 onMounted(() => {
     getSubset()
     getTag()
@@ -112,6 +155,9 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .form {
+    position: relative;
+    padding-top: @space-xl;
+
     input {
         border: none;
         background: transparent;
@@ -132,6 +178,17 @@ onMounted(() => {
         top: 0;
 
     }
+
+    .longText {
+        width: 100%;
+        border-bottom: 1px solid @gray-2;
+    }
+
+    .cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 </style>
 <style lang="less">
@@ -139,6 +196,18 @@ onMounted(() => {
     .yk-dropdown__title {
         width: 120px;
         height: 24px;
+    }
+
+    .yk-text-area {
+        border: 0px solid transparent;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .yk-upload__picture-button,
+    .yk-upload-picture {
+        width: 160px;
+        height: 120px;
     }
 }
 </style>
