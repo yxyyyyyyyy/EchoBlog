@@ -9,14 +9,17 @@
         </div>
 
         <yk-space style="width: 100%;">
-            <EditGalleryPic />
-            <div class="edit-form"></div>
+            <!-- <EditGalleryPic /> -->
+            <div class="edit-form">
+                <Form style="width: 800px;"/>
+            </div>
         </yk-space>
     </div>
 </template>
 
 <script lang="ts" setup>
-import EditGalleryPic from '../components/gallery/EditGalleryPic.vue';
+import Form from '../components/forms/Form.vue';
+// import EditGalleryPic from '../components/gallery/EditGalleryPic.vue';
 </script>
 
 <style lang="less" scoped>
@@ -40,9 +43,12 @@ import EditGalleryPic from '../components/gallery/EditGalleryPic.vue';
     .edit-form {
         background: @bg-color-l;
         height: 400px;
-        width: 440px;
+        width: 100%;
         flex: none;
         border-radius: @radius-m;
+        display: flex;
+        justify-content: center;
+        padding: 24px 0 ;
     }
 }
 </style>

@@ -125,11 +125,11 @@ const photos = [
 
 const photoarr = [
   ["1.jpg"],
-  ["1.jpg","2.jpg"],
-  ["3.jpg","4.jpg"],
-  ["5.jpg","6.jpg"],
-  ["3.jpg","4.jpg",'5.jpg'],
-  ["1.jpg","2.jpg",'4.jpg'],
+  ["1.jpg", "2.jpg"],
+  ["3.jpg", "4.jpg"],
+  ["5.jpg", "6.jpg"],
+  ["3.jpg", "4.jpg", '5.jpg'],
+  ["1.jpg", "2.jpg", '4.jpg'],
 ]
 
 export const fileData = mock.mock({
@@ -203,7 +203,7 @@ export const mkdairy = mock.mock({
       "id|+1": 0,
       "title": "@ctitle(4,12)",
       "moment": "@datetime()",
-      "weatherId|0-6":0,
+      "weatherId|0-6": 0,
       "content": "@cparagraph(8,10)",
       "picture|1": photoarr
     }]
@@ -213,10 +213,10 @@ export const mkdairy = mock.mock({
 
 // pic List
 export const picList = mock.mock({
-  "data|6":[
+  "data|6": [
     {
-      "id|+1":0,
-      "url|1":photos
+      "id|+1": 0,
+      "url|1": photos
     }
   ]
 })
