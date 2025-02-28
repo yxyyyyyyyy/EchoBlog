@@ -6,30 +6,52 @@
 
   <div class="Editormain">
     <From style="width: 820px;" :classify="0" />
-    <Editor style="height: 500px; width:820px;overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig"
-      :mode="mode" @onCreated="handleCreated" />
+    <Editor style="min-height: 500px; width:820px;overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig"
+      :mode="mode" @onCreated="handleCreated" @onChange="onChange"/>
   </div>
 
 </template>
 
 <script lang="ts" setup>
+import type { IEditorConfig } from '@wangeditor/editor'
 import From from './Form.vue'
 import './index.less'
+import { colors } from './color'
 
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
+// 初始化 MENU_CONF 属性
+const editorConfig: Partial<IEditorConfig> = {
+  MENU_CONF: {
+    color: {
+      colors: colors
+    },
+    bgColor: {
+      colors: colors
+    },
+    uploadImage: {
+      server: 'http://localhost:3000/api/upload',
+      // async customInsert(res: any, insertFn: InsertFnType) {
+      //   const from = new FormData()
+      //   from.append('file', res.file)
+      //   from.append('id', "Echo")
+      //   uploadApi(from).then(() => {
+      //     insertFn(url, alt, href)
+      //   })
+      // },
+    }
+  },
+}
 // 编辑器实例，必须用 shallowRef
 const editorRef = shallowRef()
-
 // 内容 HTML
 const valueHtml = ref('<p>hello</p>')
 
-// 模拟 ajax 异步获取内容
+const onChange = () => {
+  
+}
 onMounted(() => {
-  setTimeout(() => {
-    valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>'
-  }, 1500)
 })
 
 // 工具栏固定
@@ -37,8 +59,6 @@ const top = ref<boolean>(false)
 const toolbarTop = (e: boolean) => {
   top.value = e
 }
-const toolbarConfig = {}
-const editorConfig = { placeholder: '请输入内容...' }
 
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
@@ -48,7 +68,8 @@ onBeforeUnmount(() => {
 })
 
 const handleCreated = (editor: any) => {
-  editorRef.value = editor // 记录 editor 实例，重要！
+  editorRef.value = editor
+  editor.getAllMenuKeys()
 }
 </script>
 

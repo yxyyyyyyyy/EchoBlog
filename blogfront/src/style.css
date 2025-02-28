@@ -4,3 +4,7 @@ body {
 #app {
   padding-top: 64px;
 }
+strong,
+strong span {
+  font-weight: bold;
+}
