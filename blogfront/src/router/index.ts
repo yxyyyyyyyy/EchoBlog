@@ -37,6 +37,10 @@ const routes = [
     path: '/editgallery',
     component: () => import('../views/EditGallery.vue'),
   },
+  {
+    path: '/editarticle',
+    component: () => import('../views/wangEditor.vue'),
+  },
 ]
 
 const router = createRouter({

@@ -23,12 +23,12 @@
 
             </yk-space>
 
-            <div :class="{longText: props.subset == 0}">
+            <div :class="{longText: props.classify == 0}">
                 <yk-text-area v-model="formData.introduce" placeholder="请输入简介" :max-length="800" :auto-size="rows"></yk-text-area>
             </div>
         </yk-space>
 
-        <div class="cover" v-if="props.subset == 0">
+        <div class="cover" v-if="props.classify == 0">
             <yk-upload :upload-url="uploadUrl" :file-list="fileUrl" desc="封面800*600" :limit="1"
                 accept="image/*"></yk-upload>
         </div>
@@ -63,15 +63,16 @@ import { group, labelgroup } from '../../utils/mock'
 import type { LabelItem } from '../../utils/interface'
 
 const props = defineProps({
-    subset: {
-        default: 0,
+    
+    classify: {
+        default: 1,
         type: Number
     }
 })
 
 // 简介行数
 const rows = computed(() => {
-    if (props.subset === 0) {
+    if (props.classify === 0) {
         return {
             minRows: 4,
             maxRows: 10,
@@ -93,7 +94,8 @@ const formData = ref<any>({
     subsetId: undefined,
     label: [],
     introduce: '',
-    cover: ''
+    cover: '',
+    classify:props.classify
 })
 
 // 分类名称

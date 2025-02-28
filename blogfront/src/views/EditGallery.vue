@@ -9,9 +9,9 @@
         </div>
 
         <yk-space style="width: 100%;">
-            <!-- <EditGalleryPic /> -->
+            <EditGalleryPic />
             <div class="edit-form">
-                <Form style="width: 800px;"/>
+                <Form style="width: 420px;" :classify="1"/>
             </div>
         </yk-space>
     </div>
@@ -42,12 +42,11 @@ import Form from '../components/forms/Form.vue';
 
     .edit-form {
         background: @bg-color-l;
-        width: 100%;
         flex: none;
         border-radius: @radius-m;
         display: flex;
         justify-content: center;
-        padding: 24px 0 ;
+        padding: 24px;
     }
 }
 </style>
