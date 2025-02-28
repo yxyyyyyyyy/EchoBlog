@@ -1,11 +1,12 @@
 <template>
   <yk-affix :offset="60" @change="toolbarTop">
-    <Toolbar class="toolbar" :class="{ 'istop': top }" :editor="editorRef" :defaultConfig="toolbarConfig"
+    <Toolbar class="toolbar" :class="{ 'istop': top }" :editor="editorRef"
       :mode="mode" />
   </yk-affix>
 
   <div class="Editormain">
-    <From style="width: 820px;" :classify="0" />
+    
+    <slot></slot>
     <Editor style="min-height: 500px; width:820px;overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig"
       :mode="mode" @onCreated="handleCreated" @onChange="onChange"/>
   </div>
@@ -14,13 +15,14 @@
 
 <script lang="ts" setup>
 import type { IEditorConfig } from '@wangeditor/editor'
-import From from './Form.vue'
 import './index.less'
+// @ts-ignore
 import { colors } from './color'
-
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+// @ts-ignore
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-
+// 定义 mode 变量，并初始化为默认模式
+const mode = ref('default') // 或者 'simple'，根据需求选择
 // 初始化 MENU_CONF 属性
 const editorConfig: Partial<IEditorConfig> = {
   MENU_CONF: {
@@ -47,9 +49,9 @@ const editorConfig: Partial<IEditorConfig> = {
 const editorRef = shallowRef()
 // 内容 HTML
 const valueHtml = ref('<p>hello</p>')
-
+const emit=defineEmits(['formHtml'])
 const onChange = () => {
-  
+  emit('formHtml',valueHtml.value)
 }
 onMounted(() => {
 })

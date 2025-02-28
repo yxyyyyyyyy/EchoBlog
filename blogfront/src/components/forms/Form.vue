@@ -58,7 +58,7 @@
 
 
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { group, labelgroup } from '../../utils/mock'
 import type { LabelItem } from '../../utils/interface'
 
@@ -146,12 +146,18 @@ const subsetSelect = (e: number) => {
     subsetName.value = subsetList.value.find((item: any) => item.id === e).name
 }
 
+const emit=defineEmits(['formdata'])
+watch(formData.value,(newValue)=>{
+    emit('formdata',newValue)
+})
+
 const uploadUrl = ''
 const fileUrl = ref([])
 onMounted(() => {
     getSubset()
     getTag()
 })
+
 
 </script>
 

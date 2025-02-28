@@ -8,13 +8,19 @@
             </yk-space>
         </div>
 
-        <EditorWang style="width: 1200px;"/>
+        <EditorWang style="width: 1200px;" @form-html="getHtml">
+            <From style="width: 820px;" :classify="0" @formdata="formData" />
+        </EditorWang>
     </div>
 </template>
 
 <script lang="ts" setup>
-// import Form from '../components/forms/Form.vue';
 import EditorWang from '../components/forms/EditorWang.vue';
+import From from '../components/forms/Form.vue'
+
+const formData = (e: any) => { console.log(e) }
+const getHtml = (e: any) => { console.log(e) }
+
 </script>
 
 <style lang="less" scoped>
@@ -23,6 +29,7 @@ import EditorWang from '../components/forms/EditorWang.vue';
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .topbar {
         border-radius: @radius-m;
         background: @bg-color-l;
